@@ -52,7 +52,7 @@ const MainForm = ({
     e.preventDefault();
     setDataUser({
       ...dataUser,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
   const formFields = mainData.formFields;

@@ -6,7 +6,9 @@ const fetchStatesData = async (petitionMethod, backendURLBase, endpoint, clientI
     const states = payload.map( el => {
         console.log(el)
     return  el.state
-    } )
+    } ).filter(
+        (state) => state !== undefined
+      );
     const uniq = new Set(states)
           setStates([...uniq]);
 }

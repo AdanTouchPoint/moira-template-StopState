@@ -55,14 +55,23 @@ const MainForm = ({
       [e.target.name]: e.target.value,
     });
   };
-  const { zipCode, emailUser } = dataUser;
   const formFields = mainData.formFields;
-  const click = async (e) => {
-    e.preventDefault();
+  const fieldValidator = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const isValidEmail = (email) => {
       return emailRegex.test(email);
     };
+    for (let key in dataUser) {
+      let value = dataUser[key];
+      if(value === '') return false
+      if (key === 'emailUser') {
+        let value = dataUser[key];
+       if (isValidEmail(value) === false ) return false
+      }
+    }
+  }
+  const click = async (e) => {
+    e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
@@ -70,8 +79,8 @@ const MainForm = ({
     }
     setValidated(true);
     if (
-      tac === false ||
-      isValidEmail(emailUser) === false
+      fieldValidator() === false || 
+      tac  === false  ||  Object.getOwnPropertyNames(dataUser).length === 0 || dataUser.userName === undefined  || dataUser.emailUser === undefined
     ) {
       setError(true);
       return;
@@ -94,7 +103,7 @@ const MainForm = ({
   };
   if (!mainData) return "loading datos";
   if (!mp) return "loading datos";
-  console.log(states)
+  console.log(dataUser)
   return (
     <div className={"contenedor main-form-flex-container"}>
       <Card className="bg-dark card-img text-white main-image-container">

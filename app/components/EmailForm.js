@@ -26,6 +26,10 @@ const EmailForm = ({leads, setLeads, setShowThankYou, setShowFindForm, dataUser,
             [e.target.name]: e.target.value.replace(/\n\r?/g, '<br/>' ).replace(/#/g, " ")
         })
     }
+    function urlEncode(text) {
+        var encodedText = encodeURIComponent(text);
+        return encodedText;
+      }
     const {userName, text, subject } = dataUser
     const send = async e => {
         e.preventDefault()
@@ -45,7 +49,7 @@ const EmailForm = ({leads, setLeads, setShowThankYou, setShowFindForm, dataUser,
                 return
             }
         setError(false)
-        const payload = await fetchData('GET', backendURLBaseServices, endpoints.toSendEmails, clientId, `to=${allDataIn}&subject=${dataUser.subject}&firstName=${dataUser.userName}&emailData=${dataUser.emailUser}&text=${dataUser.text.replace(/\n\r?/g, "<br/>")}` )
+        const payload = await fetchData('GET', backendURLBaseServices, endpoints.toSendEmails, clientId, `to=${allDataIn}&subject=${urlEncode(dataUser.subject)}&firstName=${urlEncode(dataUser.userName)}&emailData=${urlEncode(dataUser.emailUser)}&text=${urlEncode(dataUser.text.replace(/\n\r?/g, "<br/>"))}` )
         setShowLoadSpin(false)
         if (payload.success === true) {
             fetchLeads(true, backendURLBase, endpoints, clientId, dataUser, emailData, allDataIn)

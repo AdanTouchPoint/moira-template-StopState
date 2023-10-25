@@ -77,9 +77,7 @@ const EmailForm = ({leads, setLeads, setShowThankYou, setShowFindForm, dataUser,
         e.preventDefault()
         setShowFindForm(false)
         setShowEmailForm(true)
-    }
-    console.log(allDataIn)
-    
+    }  
     return (
         <>
         {     

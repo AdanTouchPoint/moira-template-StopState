@@ -4,7 +4,6 @@ const fetchStatesData = async (petitionMethod, backendURLBase, endpoint, clientI
     const payload = datos.data
 
     const states = payload.map( el => {
-        console.log(el)
     return  el.state
     } ).filter(
         (state) => state !== undefined

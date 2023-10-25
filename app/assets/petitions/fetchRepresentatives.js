@@ -9,7 +9,6 @@ const fetchRepresentatives = async (petitionMethod, backendURLBase, endpoint, cl
     setShowLoadSpin(false)
     setShowEmailForm(false);
     setShowFindForm(true);
-     await console.log(emails)
 }
 
 

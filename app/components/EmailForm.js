@@ -55,11 +55,11 @@ const EmailForm = ({leads, setLeads, setShowThankYou, setShowFindForm, dataUser,
             fetchLeads(true, backendURLBase, endpoints, clientId, dataUser, emailData, allDataIn)
             setShowEmailForm(true)
             setShowThankYou(false)
-            setLeads(leads+1)
+            //setLeads(leads+1)
         }
         if(payload.success !== true){
         fetchLeads(false, backendURLBase, endpoints, clientId, dataUser, emailData, allDataIn)
-        setLeads(leads+1)
+        //setLeads(leads+1)
             return (
                 <Alert>
                    The mail has not been sent successfully, please try again later

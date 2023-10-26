@@ -122,7 +122,7 @@ const MainForm = ({
           </Card.Body>
         </Card.ImgOverlay>
       </Card>
-      <ProgressBar leads={leads} mainData={mainData} />
+     { /*<ProgressBar leads={leads} mainData={mainData} />*/}
       <div className={"container instructions"}>{mainData.instruction}</div>
       <div className={"form-container"}>
         <div hidden={showFindForm} className={"container container-content"}>

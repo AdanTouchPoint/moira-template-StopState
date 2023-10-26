@@ -128,8 +128,7 @@ const MainForm = ({
         <div hidden={showFindForm} className={"container container-content"}>
         {error ? (
             <Alert variant={"danger"}>
-              Todos lo campos son necesarios, por favor introduzca los
-              faltantes.
+              Please fill all fields before proceeding
             </Alert>
           ) : null}
           <Form
